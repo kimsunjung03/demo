@@ -1,5 +1,6 @@
 package com.example.demo.domain.entity;
 
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,12 +8,11 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import javax.persistence.*;
 
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@NoArgsConstructor
 @Entity
 @Table
 public class MemberEntity {
-
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
