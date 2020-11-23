@@ -1,9 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.Role;
-import com.example.demo.domain.entity.MemberEntity;
-import com.example.demo.domain.repository.MemberRepository;
-import com.example.demo.dto.MemberDto;
+import com.example.demo.domain.entity.UserEntity;
+import com.example.demo.domain.repository.UserRepository;
+import com.example.demo.dto.UserDto;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,22 +21,22 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class MemberService implements UserDetailsService {
-    private MemberRepository memberRepository;
+public class UserService implements UserDetailsService {
+    private UserRepository userRepository;
 
     @Transactional
-    public Long joinUser(MemberDto memberDto) {
+    public Long joinUser(UserDto userDto) {
         // 비밀번호 암호화
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        memberDto.setPassword(passwordEncoder.encode(memberDto.getPassword()));
+        userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
-        return memberRepository.save(memberDto.toEntity()).getId();
+        return userRepository.save(userDto.toEntity()).getId();
     }
 
     @Override
     public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
-        Optional<MemberEntity> userEntityWrapper = memberRepository.findByEmail(userEmail);
-        MemberEntity userEntity = userEntityWrapper.get();
+        Optional<UserEntity> userEntityWrapper = userRepository.findByEmail(userEmail);
+        UserEntity userEntity = userEntityWrapper.get();
 
         List<GrantedAuthority> authorities = new ArrayList<>();
 

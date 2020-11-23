@@ -1,25 +1,20 @@
 package com.example.demo.dto;
 
-import com.example.demo.domain.entity.MemberEntity;
+import com.example.demo.domain.entity.UserEntity;
 import lombok.*;
-import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
-public class MemberDto {
+public class UserDto {
 
     private Long id;
     private String email;
     private String password;
-    private LocalDateTime createdDate;
-    private LocalDateTime modifiedDate;
 
-    public MemberEntity toEntity(){
-        return MemberEntity.builder()
+    public UserEntity toEntity(){
+        return UserEntity.builder()
                 .id(id)
                 .email(email)
                 .password(password)
@@ -27,7 +22,7 @@ public class MemberDto {
     }
 
     @Builder
-    public MemberDto(Long id, String email, String password) {
+    public UserDto(Long id, String email, String password) {
         this.id = id;
         this.email = email;
         this.password = password;

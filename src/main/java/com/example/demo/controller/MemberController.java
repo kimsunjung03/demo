@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.MemberDto;
-import com.example.demo.service.MemberService;
+import com.example.demo.dto.UserDto;
+import com.example.demo.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 @AllArgsConstructor
 public class MemberController {
-    private MemberService memberService;
+    private UserService userService;
 
     @GetMapping("/")
     public String index(){
@@ -18,14 +18,13 @@ public class MemberController {
     }
 
     @GetMapping("/user/signup")
-    public String dispSignup(){
+    public String Signup(){
         return "/signup";
     }
 
     @PostMapping("/user/signup")
-    public String execSignup(MemberDto memberDto){
-        memberService.joinUser(memberDto);
-
+    public String Signup(UserDto UserDto){
+        userService.joinUser(UserDto);
         return "redirect:/user/login";
     }
 
@@ -39,27 +38,23 @@ public class MemberController {
         return "/loginSuccess";
     }
 
-    // 로그아웃 결과 페이지
     @GetMapping("/user/logout/result")
-    public String dispLogout() {
+    public String Logout() {
         return "/logout";
     }
 
-    // 접근 거부 페이지
     @GetMapping("/user/denied")
-    public String dispDenied() {
+    public String Denied() {
         return "/denied";
     }
 
-    // 내 정보 페이지
     @GetMapping("/user/info")
-    public String dispMyInfo() {
+    public String MyInfo() {
         return "/myinfo";
     }
 
-    // 어드민 페이지
     @GetMapping("/admin")
-    public String dispAdmin() {
+    public String Admin() {
         return "/admin";
     }
 
