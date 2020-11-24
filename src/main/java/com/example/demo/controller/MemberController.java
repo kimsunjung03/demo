@@ -48,11 +48,6 @@ public class MemberController {
         return "/denied";
     }
 
-    @GetMapping("/user/info")
-    public String MyInfo() {
-        return "/myinfo";
-    }
-
     @GetMapping("/admin")
     public String Admin() {
         return "/admin";

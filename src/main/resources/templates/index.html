@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <link rel="stylesheet" href="/static/index.css">
     <meta charset="UTF-8">
     <title>메인</title>
 </head>
 <body>
 <h1>메인 페이지</h1>
 <hr>
-<a sec:authorize="isAnonymous()" th:href="@{/user/login}">로그인</a>
-<a sec:authorize="isAuthenticated()" th:href="@{/user/logout}">로그아웃</a>
-<a sec:authorize="isAnonymous()" th:href="@{/user/signup}">회원가입</a>
-<a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/user/info}">내정보</a>
-<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">어드민</a>
+<a sec:authorize="isAnonymous()" th:href="@{/user/login}"> <button type="submit">로그인</button> </a>
+<a sec:authorize="isAuthenticated()" th:href="@{/user/logout}"><button type="submit">로그아웃</button></a>
+<a sec:authorize="isAnonymous()" th:href="@{/user/signup}"><button type="submit">회원가입</button></a>
+<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}"><button type="submit">어드민</button></a>
 </body>
 </html>
